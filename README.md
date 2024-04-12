@@ -1,11 +1,13 @@
 # [六角]2024 Node.js 企業專題班 - 每週作業(week3~week8)
 
-### week3 - 從 express MVC 架構建立 貼文 RESTful API(連接資料庫 mongodb)
+### [week3] 從 express MVC 架構建立 貼文 RESTful API(連接資料庫 mongodb)
 
 使用 [Express 應用程式產生器(express-generator)](https://expressjs.com/zh-tw/starter/generator.html)，快速建立應用程式架構。
 
-[[API URL]https://2024-MetaWall-node-api-week3.onrender.com/](https://2024-MetaWall-node-api-week3.onrender.com/)
+- 分支：[week3](https://github.com/ellaYang1227/2024-MetaWall-node-api/tree/week3)
+- [[API URL]https://MetaWall-node-api-week3.onrender.com/](https://MetaWall-node-api-week3.onrender.com/)
 
+---
 ## 安裝 express
 
 ```
