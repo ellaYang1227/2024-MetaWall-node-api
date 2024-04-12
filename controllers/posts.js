@@ -1,16 +1,28 @@
 const Post = require('../models/post');
+const User = require('../models/user');
 const successHandle = require('../services/successHandle');
 const errorHandle = require('../services/errorHandle');
 
 const posts = {
     async getPosts (req, res, next) {
-        // 貼文時間：新到舊
-        successHandle(res, await Post.find().sort({ createdAt: -1 }));
+        const { query } = req;
+        console.log(query)
+        // asc 遞增(由小到大，由舊到新) "createdAt"
+        // desc 遞減(由大到小、由新到舊) "-createdAt"
+        const timeSort = query.timeSort == "asc" ? "createdAt":"-createdAt"
+        const q = query.q !== undefined ? { "content": new RegExp(query.q) } : {};
+        const posts = await Post.find(q)
+            .populate({
+                path: 'user', // postSchema 的欄位名稱
+                select: 'name photo' // 要取得的資料欄位
+            })
+            .sort(timeSort);
+        successHandle(res, posts);
     },
     async createPosts (req, res, next) {
         try {
-            const { name, image, content, type, tags } = req.body;
-            const addPost = await Post.create({ name, image, content, type, tags });
+            const { user, image, content, type, tags } = req.body;
+            const addPost = await Post.create({ user, image, content, type, tags });
             successHandle(res, addPost);
         } catch ({ errors }) {
             errorHandle(res, 400, 'format', errors);

@@ -7,7 +7,15 @@
 - 分支：[week3](https://github.com/ellaYang1227/2024-MetaWall-node-api/tree/week3)
 - [[API URL]https://MetaWall-node-api-week3.onrender.com/](https://MetaWall-node-api-week3.onrender.com/)
 
+### [week4] 期中考：打造全端 (FULL STACK) 網站架構 - 貼文 RESTful API(連接資料庫 mongodb)
+
+使用引用(references)作法，將 post(貼文) collection 與 user(使用者) collection 建立關聯
+
+- 分支：[week4](https://github.com/ellaYang1227/2024-MetaWall-node-api/tree/week4)
+- [[API URL]https://MetaWall-node-api-week4.onrender.com/](https://MetaWall-node-api-week4.onrender.com/)
+
 ---
+
 ## 安裝 express
 
 ```

@@ -10,10 +10,10 @@ const mongoose = require('mongoose');
 // - tags：貼文標籤(必填)
 const postSchema = new mongoose.Schema(
     {
-        name: {
-            type: String,
-            required: [true, '貼文姓名必填'],
-            cast: false
+        user: {
+            type: mongoose.Schema.ObjectId,
+            ref: "User", // 填寫 model name
+            required: [true, 'user ID 必填']
         },
         image: {
             type: String,
