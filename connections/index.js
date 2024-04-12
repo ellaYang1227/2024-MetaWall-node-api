@@ -1,8 +1,8 @@
 const dotenv = require('dotenv');
 
 dotenv.config({ path: './config.env'});
-const { DATABASE, DATA_PASSWORD } = process.env;
-const DB = DATABASE.replace('<password>', DATA_PASSWORD);
+const { DATABASE, DATABASE_PASSWORD } = process.env;
+const DB = DATABASE.replace('<password>', DATABASE_PASSWORD);
 
 const mongoose = require('mongoose');
 // 連接資料庫 mongodb://127.0.0.1:27017/<資料庫名稱> => mongodb://127.0.0.1:27017/forum
