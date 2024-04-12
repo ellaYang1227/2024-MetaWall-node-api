@@ -48,8 +48,8 @@ const posts = {
             if (!Object.keys(req.body).length) {
                 throw new Error();
             } else {
-                const { name, image, content, type, tags } = req.body;
-                const updateData = { name, image, content, type, tags };
+                const { image, content, type, tags } = req.body;
+                const updateData = { image, content, type, tags };
                 const { id } = req.params;
                 // new 參數指定是否返回更新後的文件
                 // runValidators 參數指定是否在更新時 進行 Schema 定義的驗證器
