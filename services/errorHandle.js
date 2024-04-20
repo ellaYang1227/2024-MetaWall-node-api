@@ -6,7 +6,6 @@ const errorMag = {
 };
 
 const errorHandle = (res, statusCode, errorKey, mongooseError) => {
-    console.log(errorKey)
     res.status(statusCode).json({
         'status': false,
         'errorMag': errorMag[errorKey],
