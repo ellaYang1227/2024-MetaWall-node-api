@@ -1,12 +1,13 @@
 const Post = require('../models/post');
 const User = require('../models/user');
 const successHandle = require('../services/successHandle');
-const errorHandle = require('../services/errorHandle');
+const appError = require('../services/appError');
+const checkBodyRequired = require('../tools/checkBodyRequired');
 
+const requireds = ['content', 'type'];
 const posts = {
     async getPosts (req, res, next) {
         const { query } = req;
-        console.log(query)
         // asc 遞增(由小到大，由舊到新) "createdAt"
         // desc 遞減(由大到小、由新到舊) "-createdAt"
         const timeSort = query.timeSort == "asc" ? "createdAt":"-createdAt"
@@ -20,12 +21,23 @@ const posts = {
         successHandle(res, posts);
     },
     async createPosts (req, res, next) {
-        try {
-            const { user, image, content, type, tags } = req.body;
-            const addPost = await Post.create({ user, image, content, type, tags });
-            successHandle(res, addPost);
-        } catch ({ errors }) {
-            errorHandle(res, 400, 'format', errors);
+        const { method, body } = req;
+        const bodyResultIsPass = checkBodyRequired(
+            ['user', ...requireds],
+            method,
+            body,
+            next
+        );
+
+        if (bodyResultIsPass) {
+            const { user, image, content, type, tags } = body;
+            const findUser = await User.findById(user);
+            if (findUser) {
+                const addPost = await Post.create({ user, image, content: content.trim(), type, tags });
+                successHandle(res, addPost);
+            } else {
+                return next(appError(400, 'user', next));
+            }
         }
     },
     async deletePosts (req, res, next) {
@@ -39,30 +51,31 @@ const posts = {
         if (delPost) {
             successHandle(res, delPost)
         } else {
-            errorHandle(res, 400, 'id');
+            return next(appError(400, 'id', next));
         }
-        
     },
     async editPost (req, res, next) {
-        try {
-            if (!Object.keys(req.body).length) {
-                throw new Error();
-            } else {
-                const { image, content, type, tags } = req.body;
-                const updateData = { image, content, type, tags };
-                const { id } = req.params;
-                // new 參數指定是否返回更新後的文件
-                // runValidators 參數指定是否在更新時 進行 Schema 定義的驗證器
-                const updatePost = await Post.findByIdAndUpdate(id, updateData, { new: true, runValidators: true });
+        const { method, body } = req;
+        const bodyResultIsPass = checkBodyRequired(
+            requireds,
+            method,
+            body,
+            next
+        );
+
+        if (bodyResultIsPass) {
+            const { image, content, type, tags } = body;
+            const updateData = { image, content: content.trim(), type, tags };
+            const { id } = req.params;
+            // new 參數指定是否返回更新後的文件
+            // runValidators 參數指定是否在更新時 進行 Schema 定義的驗證器
+            const updatePost = await Post.findByIdAndUpdate(id, updateData, { new: true, runValidators: true });
         
-                if (updatePost) {
-                    successHandle(res, updatePost);
-                } else {
-                    errorHandle(res, 400, 'id');
-                }
+            if (updatePost) {
+                successHandle(res, updatePost);
+            } else {
+                return next(appError(400, 'id', next));
             }
-        } catch ({ errors }) {
-            errorHandle(res, 400, 'format', errors);
         }
     }
 

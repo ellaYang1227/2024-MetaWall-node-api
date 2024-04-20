@@ -14,6 +14,13 @@
 - 分支：[week4](https://github.com/ellaYang1227/2024-MetaWall-node-api/tree/week4)
 - [[API URL]https://MetaWall-node-api-week4.onrender.com/](https://MetaWall-node-api-week4.onrender.com/)
 
+### [week5] Express middleware 異常狀態處理(連接資料庫 mongodb)
+
+使用 [Express middleware 中介軟體](https://expressjs.com/zh-tw/guide/using-middleware.html)，統一處理錯誤或異常狀態處理。並透過 [cross-env 套件](https://www.npmjs.com/package/cross-env)針對 development 與 production 環境設定不同的錯誤訊息。
+
+- 分支：[week5](https://github.com/ellaYang1227/2024-MetaWall-node-api/tree/week5)
+- [[API URL]https://MetaWall-node-api-week5.onrender.com/](https://MetaWall-node-api-week5.onrender.com/)
+
 ---
 
 ## 安裝 express
@@ -88,5 +95,6 @@ DATABASE=
 - dotenv v16.4.5
 - express v4.16.1
 - cors v2.8.5
+- cross-env v7.0.3
 - Render 部署 API
 - Postman API 測試工具
