@@ -42,7 +42,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user\": \"6617e16bdc5da7a4a45b762a\",\r\n    \"image\": \"\",\r\n    \"content\": \"ella2\",\r\n    \"type\": \"fan\",\r\n    \"tags\": [\"謎因\",\"電影\",\"感情\"]\r\n}",
+							"raw": "{\r\n    \"user\": \"6617e16bdc5da7a4a45b762a\",\r\n    \"image\": \"\",\r\n    \"content\": \"ella0415\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -78,12 +78,12 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}posts/6617e886cb0cef0f57100404",
+							"raw": "{{url}}posts/6624bec2488c008eae36fad7",
 							"host": [
 								"{{url}}posts"
 							],
 							"path": [
-								"6617e886cb0cef0f57100404"
+								"6624bec2488c008eae36fad7"
 							]
 						}
 					},
@@ -96,7 +96,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"image\": \"\",\r\n    \"content\": \"大家好，我叫 ella 22\",\r\n    \"type\": \"fan\",\r\n    \"tags\": [\"謎因\",\"電影\",\"感情\"]\r\n}",
+							"raw": "{\r\n    \"image\": \"\",\r\n    \"content\": \"1111\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -104,12 +104,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}posts/6617e9ce1db3d12e4efe5c4d",
+							"raw": "{{url}}posts/6624bee1488c008eae36fade",
 							"host": [
 								"{{url}}posts"
 							],
 							"path": [
-								"6617e9ce1db3d12e4efe5c4d"
+								"6624bee1488c008eae36fade"
 							]
 						}
 					},

@@ -4,7 +4,7 @@ const successHandle = require('../services/successHandle');
 const appError = require('../services/appError');
 const checkBodyRequired = require('../tools/checkBodyRequired');
 
-const requireds = ['content', 'type'];
+const requireds = ['content'];
 const posts = {
     async getPosts (req, res, next) {
         const { query } = req;
@@ -30,10 +30,10 @@ const posts = {
         );
 
         if (bodyResultIsPass) {
-            const { user, image, content, type, tags } = body;
+            const { user, image, content } = body;
             const findUser = await User.findById(user);
             if (findUser) {
-                const addPost = await Post.create({ user, image, content: content.trim(), type, tags });
+                const addPost = await Post.create({ user, image, content: content.trim() });
                 successHandle(res, addPost);
             } else {
                 return next(appError(400, 'user', next));
@@ -64,8 +64,8 @@ const posts = {
         );
 
         if (bodyResultIsPass) {
-            const { image, content, type, tags } = body;
-            const updateData = { image, content: content.trim(), type, tags };
+            const { image, content } = body;
+            const updateData = { image, content: content.trim() };
             const { id } = req.params;
             // new 參數指定是否返回更新後的文件
             // runValidators 參數指定是否在更新時 進行 Schema 定義的驗證器
