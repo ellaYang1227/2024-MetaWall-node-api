@@ -1,17 +1,29 @@
 const errorMag = {
-    'data': '沒有資料',
-    'id': '沒有此 _id',
-    'format': '格式錯誤',
-    'routing': '沒有此路由'
+    axios: 'axios 連線錯誤',
+    data: '沒有資料或空值',
+    email: '此 email 帳號已註冊',
+    emptyObject: '至少需要包含一個欄位',
+    id: '沒有此 _id',
+    validation: '資料欄位格式錯誤',
+    syntax: '語法錯誤',
+    routing: '沒有此路由',
+    requireds: '必填欄位',
+    user: '沒有此 user',
+    500: '系統錯誤，請洽系統管理員'
 };
 
-const errorHandle = (res, statusCode, errorKey, mongooseError) => {
-    console.log(errorKey)
-    res.status(statusCode).json({
-        'status': false,
-        'errorMag': errorMag[errorKey],
-        'error': mongooseError
-    });
+const errorHandle = (res, statusCode, message, error, stack) => {
+    message = errorMag.hasOwnProperty(message) ? errorMag[message] : message;
+
+    const send = {
+        status: false,
+        message
+    };
+
+    if (error) { send.error = error }
+    if (stack) { send.stack = stack }
+
+    res.status(statusCode).json(send);
 };
 
-module.exports = errorHandle;
+module.exports = { errorMag, errorHandle };
