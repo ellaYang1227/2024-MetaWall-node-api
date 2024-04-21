@@ -21,8 +21,8 @@ const posts = {
     },
     async createPosts (req, res, next) {
         try {
-            const { user, image, content, type, tags } = req.body;
-            const addPost = await Post.create({ user, image, content: content.trim(), type, tags });
+            const { user, image, content } = req.body;
+            const addPost = await Post.create({ user, image, content: content.trim() });
             successHandle(res, addPost);
         } catch ({ errors }) {
             errorHandle(res, 400, 'format', errors);
@@ -54,7 +54,7 @@ const posts = {
                 throw new Error();
             } else {
                 // 檢查是否有多餘欄位
-                const fields = ['name', 'image', 'content', 'type', 'tags'];
+                const fields = ['image', 'content'];
                 const excessFields = Object.keys(body).reduce((accumulator, currentValue) => {
                     if (!fields.includes(currentValue)) { accumulator.push(currentValue) }
                     return accumulator;
@@ -64,8 +64,8 @@ const posts = {
                    return errorHandle(res, 400, 'format', `不應包含 ${ excessFields.join('、') } 欄位`);
                 }
                 
-                const { image, content, type, tags } = body;
-                const updateData = { image, content: content?.trim(), type, tags };
+                const { image, content } = body;
+                const updateData = { image, content: content?.trim() };
                 const { id } = params;
                 // new 參數指定是否返回更新後的文件
                 // runValidators 參數指定是否在更新時 進行 Schema 定義的驗證器

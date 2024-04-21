@@ -78,12 +78,12 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}posts/6617e886cb0cef0f57100404",
+							"raw": "{{url}}posts/6623b4d40f695087d0022e6c",
 							"host": [
 								"{{url}}posts"
 							],
 							"path": [
-								"6617e886cb0cef0f57100404"
+								"6623b4d40f695087d0022e6c"
 							]
 						}
 					},
@@ -104,12 +104,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}posts/6617e9ce1db3d12e4efe5c4d",
+							"raw": "{{url}}posts/6623af5d8aeb633ce65d86ba",
 							"host": [
 								"{{url}}posts"
 							],
 							"path": [
-								"6617e9ce1db3d12e4efe5c4d"
+								"6623af5d8aeb633ce65d86ba"
 							]
 						}
 					},

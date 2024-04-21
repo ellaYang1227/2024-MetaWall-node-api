@@ -6,8 +6,6 @@ const mongoose = require('mongoose');
 // - likes：按讚數
 // - comments：留言數
 // - createdAt：發文時間
-// - type：貼文種類 fan(粉絲)、group(社團) (必填)
-// - tags：貼文標籤(必填)
 const postSchema = new mongoose.Schema(
     {
         user: {
@@ -39,17 +37,7 @@ const postSchema = new mongoose.Schema(
             type: Date,
             default: Date.now,
             select: false
-        },
-        type: {
-            type: String,
-            required: [true, '貼文種類必填'],
-            enum: ['fan','group'],
-            cast: false
-        },
-        tags: [{
-            type: String,
-            cast: false
-        }]
+        }
     }, {
         versionKey: false // 移除欄位 __v
     }
