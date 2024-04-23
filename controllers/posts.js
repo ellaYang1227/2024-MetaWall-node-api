@@ -17,9 +17,13 @@ const posts = {
         }
     },
     async deletePosts (req, res, next) {
-        await Post.deleteMany({});
-        const posts = await Post.find();
-        successHandle(res, posts);
+        if (req.originalUrl === '/posts') {
+            await Post.deleteMany({});
+            const posts = await Post.find();
+            successHandle(res, posts);
+        } else {
+            errorHandle(res, 400, 'routing');
+        }
     },
     async deletePost (req, res, next) {
         try {
