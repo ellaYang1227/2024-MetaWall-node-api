@@ -46,7 +46,7 @@ const posts = {
             const posts = await Post.find();
             successHandle(res, posts);
         } else {
-            errorHandle(res, 400, 'routing');
+            return next(appError(400, 'routing', next));
         }
     },
     async deletePost (req, res, next) {
