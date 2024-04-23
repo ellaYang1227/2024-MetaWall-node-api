@@ -6,7 +6,6 @@ const errorHandle = require('../services/errorHandle');
 const posts = {
     async getPosts (req, res, next) {
         const { query } = req;
-        console.log(query)
         // asc 遞增(由小到大，由舊到新) "createdAt"
         // desc 遞減(由大到小、由新到舊) "-createdAt"
         const timeSort = query.timeSort == "asc" ? "createdAt":"-createdAt"
@@ -29,9 +28,13 @@ const posts = {
         }
     },
     async deletePosts (req, res, next) {
-        await Post.deleteMany({});
-        const posts = await Post.find();
-        successHandle(res, posts);
+        if (req.originalUrl === '/posts') {
+            await Post.deleteMany({});
+            const posts = await Post.find();
+            successHandle(res, posts);
+        } else {
+            errorHandle(res, 400, 'routing');
+        }
     },
     async deletePost (req, res, next) {
         try {
