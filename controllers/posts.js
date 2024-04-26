@@ -3,6 +3,7 @@ const User = require('../models/user');
 const successHandle = require('../services/successHandle');
 const appError = require('../services/appError');
 const checkBodyRequired = require('../tools/checkBodyRequired');
+const customizeValidator = require('../tools/customizeValidator');
 
 const requireds = ['content'];
 const posts = {
@@ -21,45 +22,7 @@ const posts = {
         successHandle(res, posts);
     },
     async createPosts (req, res, next) {
-        const { method, body } = req;
-        const bodyResultIsPass = checkBodyRequired(
-            ['user', ...requireds],
-            method,
-            body,
-            next
-        );
-
-        if (bodyResultIsPass) {
-            const { user, image, content } = body;
-            const findUser = await User.findById(user);
-            if (findUser) {
-                const addPost = await Post.create({ user, image, content: content.trim() });
-                successHandle(res, addPost);
-            } else {
-                return next(appError(400, 'user', next));
-            }
-        }
-    },
-    async deletePosts (req, res, next) {
-        if (req.originalUrl === '/posts') {
-            await Post.deleteMany({});
-            const posts = await Post.find();
-            successHandle(res, posts);
-        } else {
-            return next(appError(400, 'routing', next));
-        }
-    },
-    async deletePost (req, res, next) {
-        const { id } = req.params;
-        const delPost = await Post.findByIdAndDelete(id);
-        if (delPost) {
-            successHandle(res, delPost)
-        } else {
-            return next(appError(400, 'id', next));
-        }
-    },
-    async editPost (req, res, next) {
-        const { method, body } = req;
+        const { method, body, user } = req;
         const bodyResultIsPass = checkBodyRequired(
             requireds,
             method,
@@ -69,16 +32,62 @@ const posts = {
 
         if (bodyResultIsPass) {
             const { image, content } = body;
-            const updateData = { image, content: content.trim() };
-            const { id } = req.params;
+            customizeValidator.url(image, next, 'image');
+
+            const findUser = await User.findById(user.id);
+            if (findUser) {
+                const addPost = await Post.create({ user: user.id, image, content });
+                successHandle(res, addPost);
+            } else {
+                return next(appError(400, 'memberNotExist', next));
+            }
+        }
+    },
+    async deletePosts (req, res, next) {
+        if (req.originalUrl === '/posts') {
+            await Post.deleteMany({ user: req.user.id });
+            const posts = await Post.find();
+            successHandle(res, posts);
+        } else {
+            return next(appError(400, 'routing', next));
+        }
+    },
+    async deletePost (req, res, next) {
+        const { params, user } = req;
+        const { id } = params;
+        const delPost = await Post.findOneAndDelete({ id, user: user.id });
+
+        if (delPost) {
+            successHandle(res, delPost)
+        } else {
+            return next(appError(400, 'idOrNotBelong', next));
+        }
+    },
+    async editPost (req, res, next) {
+        const { method, body, user, params } = req;
+        const bodyResultIsPass = checkBodyRequired(
+            requireds,
+            method,
+            body,
+            next
+        );
+
+        if (bodyResultIsPass) {
+            const { image, content } = body;
+            if (image) { customizeValidator.url(image, next, 'image') }
+
+            const updateData = { image, content };
             // new 參數指定是否返回更新後的文件
             // runValidators 參數指定是否在更新時 進行 Schema 定義的驗證器
-            const updatePost = await Post.findByIdAndUpdate(id, updateData, { new: true, runValidators: true });
+            const updatePost = await Post.findOneAndUpdate(
+                { _id: params.id, user: user.id }, 
+                updateData, 
+                { new: true, runValidators: true });
         
             if (updatePost) {
                 successHandle(res, updatePost);
             } else {
-                return next(appError(400, 'id', next));
+                return next(appError(400, 'idOrNotBelong', next));
             }
         }
     }

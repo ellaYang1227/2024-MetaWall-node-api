@@ -21,6 +21,13 @@
 - 分支：[week5](https://github.com/ellaYang1227/2024-MetaWall-node-api/tree/week5)
 - [[API URL]https://MetaWall-node-api-week5.onrender.com/](https://MetaWall-node-api-week5.onrender.com/)
 
+### [week6] JWT 身份驗證機制(連接資料庫 mongodb)
+
+使用 [jsonwebtoken 套件](https://github.com/auth0/node-jsonwebtoken#jwtsignpayload-secretorprivatekey-options-callback) 新增 JWT 身份驗證、使用 [validator 套件](https://www.npmjs.com/package/validator) 新增自訂欄位驗證器功能、使用 [bcryptjs 套件](https://www.npmjs.com/package/bcryptjs) 新增密碼加解密處理功能。
+
+- 分支：[week6](https://github.com/ellaYang1227/2024-MetaWall-node-api/tree/week6)
+- [[API URL]https://MetaWall-node-api-week6.onrender.com/](https://MetaWall-node-api-week6.onrender.com/)
+
 ---
 
 ## 安裝 express
@@ -96,5 +103,8 @@ DATABASE=
 - express v4.16.1
 - cors v2.8.5
 - cross-env v7.0.3
+- jsonwebtoken v9.0.2
+- validator v13.11.0
+- bcryptjs v2.4.3
 - Render 部署 API
 - Postman API 測試工具

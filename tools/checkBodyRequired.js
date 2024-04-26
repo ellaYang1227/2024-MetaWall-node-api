@@ -7,17 +7,13 @@ const checkBodyRequired = (requireds, method, body, next) => {
     requireds.forEach(item => {
         // POST - 不能沒有傳 requireds 欄位名稱
         // PATCH - 只要有傳 requireds 欄位名稱一個即可
+        if (typeof body[item] === 'string') { body[item] = body[item].trim() }
+
         if (method === 'POST' && body[item] === undefined) {
             errors.push(`${item} ${errorMag.requireds}`);
-        } else if (method === 'PATCH') {
-            if (!Object.keys(body).length) {
-                errors.push(errorMag.emptyObject);
-            } else if (typeof body[item] === 'string' && body[item].trim() === '') {
-                errors.push(`${item} ${errorMag.data}`);
-            } else {
-                count += 1;
-            }
-        } else if (typeof body[item] === 'string' && body[item].trim() === '') {
+        } else if (method === 'PATCH' && !Object.keys(body).length) {
+            errors.push(errorMag.emptyObject);
+        } else if (body[item] === '') {
             errors.push(`${item} ${errorMag.data}`);
         } else if (Array.isArray(body[item]) && !body[item].length) {
             errors.push(`${item} ${errorMag.requireds}`);
