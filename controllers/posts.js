@@ -10,7 +10,7 @@ const posts = {
         const { query } = req;
         // asc 遞增(由小到大，由舊到新) "createdAt"
         // desc 遞減(由大到小、由新到舊) "-createdAt"
-        const timeSort = query.timeSort == "asc" ? "createdAt":"-createdAt"
+        const timeSort = query.timeSort === "asc" ? "createdAt":"-createdAt"
         const q = query.q !== undefined ? { "content": new RegExp(query.q) } : {};
         const posts = await Post.find(q)
             .populate({
