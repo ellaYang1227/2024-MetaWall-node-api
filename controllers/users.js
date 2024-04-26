@@ -92,9 +92,7 @@ const users = {
         );
 
         if (bodyResultIsPass) {
-            console.log(user)
             const { photo, name, sex } = body;
-            console.log(photo, name, sex)
             if (photo) { customizeValidator.url(photo, next, 'photo') }
             if (name) { customizeValidator.name(name, next) }
             if (sex) { customizeValidator.sex(sex, next) }
