@@ -54,8 +54,7 @@ const posts = {
     },
     async deletePost (req, res, next) {
         const { params, user } = req;
-        const { id } = params;
-        const delPost = await Post.findOneAndDelete({ id, user: user.id });
+        const delPost = await Post.findOneAndDelete({ _id: params.id , user: user.id });
 
         if (delPost) {
             successHandle(res, delPost)
