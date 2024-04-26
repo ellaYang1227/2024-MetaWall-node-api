@@ -93,6 +93,9 @@ http://127.0.0.1:3000/
 ```
 DATABASE_PASSWORD=
 DATABASE=
+// week6 新增
+JWT_SECRET=
+JWT_EXPIRES_IN=
 ```
 
 ## 專案技術
