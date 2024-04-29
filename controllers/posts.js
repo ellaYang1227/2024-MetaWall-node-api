@@ -3,14 +3,15 @@ const User = require('../models/user');
 const successHandle = require('../services/successHandle');
 const appError = require('../services/appError');
 const checkBodyRequired = require('../tools/checkBodyRequired');
+const customizeValidator = require('../tools/customizeValidator');
 
-const requireds = ['content', 'type'];
+const requireds = ['content'];
 const posts = {
     async getPosts (req, res, next) {
         const { query } = req;
         // asc 遞增(由小到大，由舊到新) "createdAt"
         // desc 遞減(由大到小、由新到舊) "-createdAt"
-        const timeSort = query.timeSort == "asc" ? "createdAt":"-createdAt"
+        const timeSort = query.timeSort === "asc" ? "createdAt":"-createdAt"
         const q = query.q !== undefined ? { "content": new RegExp(query.q) } : {};
         const posts = await Post.find(q)
             .populate({
@@ -21,41 +22,7 @@ const posts = {
         successHandle(res, posts);
     },
     async createPosts (req, res, next) {
-        const { method, body } = req;
-        const bodyResultIsPass = checkBodyRequired(
-            ['user', ...requireds],
-            method,
-            body,
-            next
-        );
-
-        if (bodyResultIsPass) {
-            const { user, image, content, type, tags } = body;
-            const findUser = await User.findById(user);
-            if (findUser) {
-                const addPost = await Post.create({ user, image, content: content.trim(), type, tags });
-                successHandle(res, addPost);
-            } else {
-                return next(appError(400, 'user', next));
-            }
-        }
-    },
-    async deletePosts (req, res, next) {
-        await Post.deleteMany({});
-        const posts = await Post.find();
-        successHandle(res, posts);
-    },
-    async deletePost (req, res, next) {
-        const { id } = req.params;
-        const delPost = await Post.findByIdAndDelete(id);
-        if (delPost) {
-            successHandle(res, delPost)
-        } else {
-            return next(appError(400, 'id', next));
-        }
-    },
-    async editPost (req, res, next) {
-        const { method, body } = req;
+        const { method, body, user } = req;
         const bodyResultIsPass = checkBodyRequired(
             requireds,
             method,
@@ -64,17 +31,62 @@ const posts = {
         );
 
         if (bodyResultIsPass) {
-            const { image, content, type, tags } = body;
-            const updateData = { image, content: content.trim(), type, tags };
-            const { id } = req.params;
+            const { image, content } = body;
+            customizeValidator.url(image, next, 'image');
+
+            const findUser = await User.findById(user.id);
+            if (findUser) {
+                const addPost = await Post.create({ user: user.id, image, content });
+                successHandle(res, addPost);
+            } else {
+                return next(appError(400, 'memberNotExist', next));
+            }
+        }
+    },
+    async deletePosts (req, res, next) {
+        if (req.originalUrl === '/posts') {
+            await Post.deleteMany({ user: req.user.id });
+            const posts = await Post.find();
+            successHandle(res, posts);
+        } else {
+            return next(appError(400, 'routing', next));
+        }
+    },
+    async deletePost (req, res, next) {
+        const { params, user } = req;
+        const delPost = await Post.findOneAndDelete({ _id: params.id , user: user.id });
+
+        if (delPost) {
+            successHandle(res, delPost)
+        } else {
+            return next(appError(400, 'idOrNotBelong', next));
+        }
+    },
+    async editPost (req, res, next) {
+        const { method, body, user, params } = req;
+        const bodyResultIsPass = checkBodyRequired(
+            requireds,
+            method,
+            body,
+            next
+        );
+
+        if (bodyResultIsPass) {
+            const { image, content } = body;
+            if (image) { customizeValidator.url(image, next, 'image') }
+
+            const updateData = { image, content };
             // new 參數指定是否返回更新後的文件
             // runValidators 參數指定是否在更新時 進行 Schema 定義的驗證器
-            const updatePost = await Post.findByIdAndUpdate(id, updateData, { new: true, runValidators: true });
+            const updatePost = await Post.findOneAndUpdate(
+                { _id: params.id, user: user.id }, 
+                updateData, 
+                { new: true, runValidators: true });
         
             if (updatePost) {
                 successHandle(res, updatePost);
             } else {
-                return next(appError(400, 'id', next));
+                return next(appError(400, 'idOrNotBelong', next));
             }
         }
     }
