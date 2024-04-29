@@ -9,6 +9,8 @@ const customizeValidator = {
         if (!validator.isEmail(email)) {
             return next(appError(400, `email ${errorMag.validation}`, next));
         }
+
+        return true;
     },
     password (password, next) {
         // 密碼長度至少 8 碼，且英數混合
@@ -17,6 +19,8 @@ const customizeValidator = {
         ) {
             return next(appError(400, 'password', next));
         }
+
+        return true;
     },
     name (name, next) {
         if (typeof name !== 'string') {
@@ -27,6 +31,8 @@ const customizeValidator = {
         if (!validator.isLength(name, { min: 2 })) {
             return next(appError(400, 'nameMinLength', next));
         }
+
+        return true;
     },
     url (value, next, field) {
         if (typeof value !== 'string') {
@@ -37,11 +43,15 @@ const customizeValidator = {
         if (!validator.isURL(value, { protocols: ['https']})) {
             return next(appError(400, `${field} ${errorMag.url}`, next));
         }
+
+        return true;
     },
     sex (sex, next) {
         if (sex !== 'male' && sex !== 'female') {
             return next(appError(400, 'sex', next));
         }
+
+        return true;
     },
 };
 
