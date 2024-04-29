@@ -32,7 +32,8 @@ const posts = {
 
         if (bodyResultIsPass) {
             const { image, content } = body;
-            customizeValidator.url(image, next, 'image');
+            const isValid = !image || image && customizeValidator.url(image, next, 'image');;
+            if (!isValid) { return }
 
             const findUser = await User.findById(user.id);
             if (findUser) {
@@ -73,7 +74,8 @@ const posts = {
 
         if (bodyResultIsPass) {
             const { image, content } = body;
-            if (image) { customizeValidator.url(image, next, 'image') }
+            const isValid = !image || image && customizeValidator.url(image, next, 'image');;
+            if (!isValid) { return }
 
             const updateData = { image, content };
             // new 參數指定是否返回更新後的文件
