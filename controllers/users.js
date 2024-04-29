@@ -104,7 +104,7 @@ const users = {
             if (updatUser) {
                 successHandle(res, updatUser);
             } else {
-                return next(appError(400, 'jwt', memberNotExist));
+                return next(appError(400, 'jwt', next));
             }
         }
     }
