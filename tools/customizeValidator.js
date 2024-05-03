@@ -1,4 +1,5 @@
 const validator = require('validator');
+const sizeOf = require('image-size');
 
 const appError = require('../services/appError');
 const { errorMag } = require('../services/errorHandle');
@@ -9,6 +10,8 @@ const customizeValidator = {
         if (!validator.isEmail(email)) {
             return next(appError(400, `email ${errorMag.validation}`, next));
         }
+
+        return true;
     },
     password (password, next) {
         // 密碼長度至少 8 碼，且英數混合
@@ -17,6 +20,8 @@ const customizeValidator = {
         ) {
             return next(appError(400, 'password', next));
         }
+
+        return true;
     },
     name (name, next) {
         if (typeof name !== 'string') {
@@ -27,6 +32,8 @@ const customizeValidator = {
         if (!validator.isLength(name, { min: 2 })) {
             return next(appError(400, 'nameMinLength', next));
         }
+
+        return true;
     },
     url (value, next, field) {
         if (typeof value !== 'string') {
@@ -37,12 +44,42 @@ const customizeValidator = {
         if (!validator.isURL(value, { protocols: ['https']})) {
             return next(appError(400, `${field} ${errorMag.url}`, next));
         }
+
+        return true;
     },
     sex (sex, next) {
         if (sex !== 'male' && sex !== 'female') {
             return next(appError(400, 'sex', next));
         }
+
+        return true;
     },
+    uploadFiles(fileslen, next) {
+        // 是否有上傳檔案
+        if (!fileslen) {
+            return next(appError(400, '尚未上傳檔案', next));
+        }
+
+        return true;
+    },
+    imgEqualSize(fileBuffer, next) {
+        // 圖片寬高比 1:1
+        const dimensions = sizeOf(fileBuffer);
+        if (dimensions.width !== dimensions.height) {
+            return next(appError(400, 'imgEqualSize', next));
+        }
+
+        return true;
+    },
+    imgWidthSize(fileBuffer, next) {
+        // 解析度寬度至少 300 像素以上
+        const dimensions = sizeOf(fileBuffer);
+        if (300 > dimensions.width) {
+            return next(appError(400, 'imgWidthSize', next));
+        }
+
+        return true;
+    }
 };
 
 module.exports = customizeValidator;
