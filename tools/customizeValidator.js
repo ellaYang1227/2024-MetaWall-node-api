@@ -1,4 +1,5 @@
 const validator = require('validator');
+const sizeOf = require('image-size');
 
 const appError = require('../services/appError');
 const { errorMag } = require('../services/errorHandle');
@@ -53,6 +54,32 @@ const customizeValidator = {
 
         return true;
     },
+    uploadFiles(fileslen, next) {
+        // 是否有上傳檔案
+        if (!fileslen) {
+            return next(appError(400, '尚未上傳檔案', next));
+        }
+
+        return true;
+    },
+    imgEqualSize(fileBuffer, next) {
+        // 圖片寬高比 1:1
+        const dimensions = sizeOf(fileBuffer);
+        if (dimensions.width !== dimensions.height) {
+            return next(appError(400, 'imgEqualSize', next));
+        }
+
+        return true;
+    },
+    imgWidthSize(fileBuffer, next) {
+        // 解析度寬度至少 300 像素以上
+        const dimensions = sizeOf(fileBuffer);
+        if (300 > dimensions.width) {
+            return next(appError(400, 'imgWidthSize', next));
+        }
+
+        return true;
+    }
 };
 
 module.exports = customizeValidator;
