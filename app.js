@@ -42,6 +42,10 @@ const resErrorProd = (err, res) => {
   if (err.isOperational) {
     errorHandle(res, err.statusCode, err.message);
   } else {
+    if (err.name === 'MulterError' && err.message === 'Field name missing') {
+      return errorHandle(res, 400, 'validation');
+    }
+
     // log 紀錄
     console.error('出現重大錯誤', err);
     // 送出罐頭預設訊息

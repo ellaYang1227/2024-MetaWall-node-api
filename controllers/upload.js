@@ -41,7 +41,6 @@ const upload = {
             };
             // 取得檔案的網址
             blob.getSignedUrl(config, (err, fileUrl) => {
-                console.log(fileUrl)
                 successHandle(res, { fileUrl });
             });
         });
