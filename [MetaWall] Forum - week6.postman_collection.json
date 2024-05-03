@@ -54,7 +54,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"image\": \"https://www.google.com/\",\r\n    \"content\": \"ella0415\"\r\n}",
+							"raw": "{\r\n    \"image\": \"https://storage.googleapis.com/metawall-node-api.appspot.com/images/2aefb493-8e19-40e5-b60a-3350150813a9.jpg?GoogleAccessId=firebase-adminsdk-5cnz3%40metawall-node-api.iam.gserviceaccount.com&Expires=16756646400&Signature=xgp6Ao%2BQq75C3M4Qr7h3NJueG46BqTBShVT18g24jNp8bsZnyZ39o9CJVSVtdVl5ar0dp0jD6iAmvP%2F06Pde0CLHtRThLF0ewfcOI1dW%2FPSMCg41f7I8J8KRdq3EzFjilzkn%2FusYezmKZ7oJbB6k8kzfZhWFcnwXA%2BiKRXQtoaCJdORcPKEPXUXWlC7v4p5jyyYuxugnv5Tc9LmT1q3wMjCPyKBoDgO2KpTbe9RD5aK2YqO%2BbqJr8PiMh8by3hbmACcpvPeCXBcMPE7k%2BiYKZNSVAYc467427OldvZkCEB4MqeK%2BasFz%2BjqJtt6a7tf0d76sOzlWbsNTSq3dM7G%2FiQ%3D%3D\",\r\n    \"content\": \"今天下雨天0426\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -102,12 +102,12 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}posts/6624c3935b600d64b6908fc7",
+							"raw": "{{url}}posts/662f50ff43c29d4165b7bf8c",
 							"host": [
 								"{{url}}posts"
 							],
 							"path": [
-								"6624c3935b600d64b6908fc7"
+								"662f50ff43c29d4165b7bf8c"
 							]
 						}
 					},
@@ -126,7 +126,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"image\": \"\",\r\n    \"content\": \"1111\"\r\n}",
+							"raw": "{\r\n    \"image\": \"https://storage.googleapis.com/metawall-node-api.appspot.com/images/2aefb493-8e19-40e5-b60a-3350150813a9.jpg?GoogleAccessId=firebase-adminsdk-5cnz3%40metawall-node-api.iam.gserviceaccount.com&Expires=16756646400&Signature=xgp6Ao%2BQq75C3M4Qr7h3NJueG46BqTBShVT18g24jNp8bsZnyZ39o9CJVSVtdVl5ar0dp0jD6iAmvP%2F06Pde0CLHtRThLF0ewfcOI1dW%2FPSMCg41f7I8J8KRdq3EzFjilzkn%2FusYezmKZ7oJbB6k8kzfZhWFcnwXA%2BiKRXQtoaCJdORcPKEPXUXWlC7v4p5jyyYuxugnv5Tc9LmT1q3wMjCPyKBoDgO2KpTbe9RD5aK2YqO%2BbqJr8PiMh8by3hbmACcpvPeCXBcMPE7k%2BiYKZNSVAYc467427OldvZkCEB4MqeK%2BasFz%2BjqJtt6a7tf0d76sOzlWbsNTSq3dM7G%2FiQ%3D%3D\",\r\n    \"content\": \"1111\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -134,12 +134,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}posts/662a64dd129c396ae1067965",
+							"raw": "{{url}}posts/662f539abea2dcf85381801e",
 							"host": [
 								"{{url}}posts"
 							],
 							"path": [
-								"662a64dd129c396ae1067965"
+								"662f539abea2dcf85381801e"
 							]
 						}
 					},
@@ -170,7 +170,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"email@gmail.com\",\r\n    \"password\": \"1q2w3e4r\",\r\n    \"name\": \"11\"\r\n}",
+							"raw": "{\r\n    \"email\": \"email2@gmail.com\",\r\n    \"password\": \"1q2w3e4r\",\r\n    \"name\": \"ella\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -209,7 +209,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"email@gmail.com\",\r\n    \"password\": \"1q2w3e4r\"\r\n}",
+							"raw": "{\r\n    \"email\": \"email23@gmail.com\",\r\n    \"password\": \"1q2w3e4r\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -296,7 +296,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"ella\",\r\n    \"photo\": \"https://www.google.com/\",\r\n    \"sex\": \"male\"\r\n}",
+							"raw": "{\r\n    \"name\": \"ella0426\",\r\n    \"photo\": \"https://storage.googleapis.com/metawall-node-api.appspot.com/images/652fb845-42c7-4f40-992e-92e68b44fc49.jpg?GoogleAccessId=firebase-adminsdk-5cnz3%40metawall-node-api.iam.gserviceaccount.com&Expires=16756646400&Signature=Ida3c%2Fg6%2BIY0DD6EiDQE0%2BRhh8i%2Fry1EfjWO9vDxjLH2%2FtXwlz9tRfmHX2%2BekZ4BlC7T7hU7toLM4EOsMZHQjpAz3dqILE42WyrxicgGUwmensORnDnbiKZ6e1q%2B7hK7sTj2IDH5mBN%2FOYmOcRntMeQDzZUjsm0ZZ6pegOESFrTj2ev1NsItvxHimN0ng1o662hH2ft9vc3egDA9IaOSeOn5SSa%2F7y9nlJK1HVhPA%2FJDEoN7M6HDvyw%2BR4Zk73tNxBYPkTdd%2FiY8GOlRdwRTZTv9WLqM4rzyHfIDf%2B2mUsttZuzHkI3RKZEmYVXOaZvMls%2BWa8nr1JcIGAnzIE7Ldg%3D%3D\",\r\n    \"sex\": \"male\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -310,6 +310,59 @@
 							],
 							"path": [
 								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "其他",
+			"item": [
+				{
+					"name": "上傳功能",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "",
+									"type": "file",
+									"src": "/C:/Users/ellaYang/Downloads/nordwood-themes-R53t-Tg6J4c-unsplash (1).jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}upload?unit=user",
+							"host": [
+								"{{url}}upload"
+							],
+							"query": [
+								{
+									"key": "unit",
+									"value": "user"
+								}
 							]
 						}
 					},
