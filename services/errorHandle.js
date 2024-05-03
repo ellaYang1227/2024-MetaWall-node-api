@@ -18,6 +18,11 @@ const errorMag = {
     axios: 'axios 連線錯誤',
     syntax: '語法錯誤',
     routing: '沒有此路由',
+    uploadFiles: '尚未上傳檔案',
+    uploadFilesFail: '檔案上傳失敗',
+    multerErrorSize: '圖片檔案過大，僅限 2mb 以下檔案',
+    imgEqualSize: '圖片寬高比必需為 1:1，請重新輸入',
+    imgWidthSize: '解析度寬度至少 300 像素以上，請重新輸入',
     500: '系統錯誤，請洽系統管理員'
 };
 

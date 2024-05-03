@@ -7,6 +7,7 @@ const { errorHandle } = require('./services/errorHandle');
 
 const usersRouter = require('./routes/users');
 const postsRouter = require('./routes/posts');
+const uploadRouter = require('./routes/upload');
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
+app.use('/upload', uploadRouter);
 
 // 404 錯誤
 app.use((req, res, next) => {
@@ -76,8 +78,11 @@ app.use((err, req, res, next) => {
     err.message = 'syntax';
     err.isOperational = true;
     return resErrorProd(err, res);
-  } else if (err.name === 'SyntaxError') {
-    err.message = 'syntax';
+  } else if (err.message.indexOf('圖片') > -1) {
+    err.isOperational = true;
+    return resErrorProd(err, res);
+  } else if (err.name === 'MulterError' && err.message === 'File too large') {
+    err.message = 'multerErrorSize';
     err.isOperational = true;
     return resErrorProd(err, res);
   } else if (err.code === 11000) {

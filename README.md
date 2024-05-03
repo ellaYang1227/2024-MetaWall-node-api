@@ -28,6 +28,13 @@
 - 分支：[week6](https://github.com/ellaYang1227/2024-MetaWall-node-api/tree/week6)
 - [[API URL]https://MetaWall-node-api-week6.onrender.com/](https://MetaWall-node-api-week6.onrender.com/)
 
+### [week7] Firebase 檔案與空間上傳(連接資料庫 mongodb)
+
+使用 [multer 套件](https://www.npmjs.com/package/multer)、[image-size 套件](https://www.npmjs.com/package/image-size) 處理文件上傳、使用 [uuid 套件](https://www.npmjs.com/package/uuid) 為上傳檔案重新命名、使用 [firebase-admin 套件](https://www.npmjs.com/package/firebase-admin) 來存取並管理 Firebase 服務，並將圖片上傳到 Firebase 空間。
+
+- 分支：[week7](https://github.com/ellaYang1227/2024-MetaWall-node-api/tree/week7)
+- [[API URL]https://MetaWall-node-api-week7.onrender.com/](https://MetaWall-node-api-week7.onrender.com/)
+
 ---
 
 ## 安裝 express
@@ -96,6 +103,17 @@ DATABASE=
 // week6 新增
 JWT_SECRET=
 JWT_EXPIRES_IN=
+// week7 新增
+FIREBASE_TYPE=
+FIREBASE_PROJECT_ID=
+FIREBASE_PRIVATE_KEY_ID=
+FIREBASE_PRIVATE_KEY=
+FIREBASE_CLIENT_EMAIL=
+FIREBASE_CLIENT_ID=
+FIREBASE_AUTH_URI=
+FIREBASE_TOKEN_URI=
+FIREBASE_AUTH_PROVIDER_X509_CERT_URL=
+FIREBASE_CLIENT_X509_CERT_URL=
 ```
 
 ## 專案技術
@@ -109,5 +127,9 @@ JWT_EXPIRES_IN=
 - jsonwebtoken v9.0.2
 - validator v13.11.0
 - bcryptjs v2.4.3
+- firebase-admin v12.1.0
+- image-size v1.1.1
+- multer v1.4.5-lts.1
+- uuid v9.0.1
 - Render 部署 API
 - Postman API 測試工具
