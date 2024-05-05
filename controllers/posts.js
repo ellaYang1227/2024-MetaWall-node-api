@@ -69,7 +69,7 @@ const posts = {
 
         if (bodyResultIsPass) {
             const { image, content } = body;
-            const updateData = { image, content: content.trim() };
+            const updateData = { image, content: content?.trim() };
             const { id } = req.params;
             // new 參數指定是否返回更新後的文件
             // runValidators 參數指定是否在更新時 進行 Schema 定義的驗證器

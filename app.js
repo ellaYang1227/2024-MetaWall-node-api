@@ -9,6 +9,14 @@ const postsRouter = require('./routes/posts');
 
 const app = express();
 
+// 補捉程式錯誤
+process.on('uncaughtException', err => {
+  // 記錄錯誤下來，等到服務都處理完後，停掉該 process
+	console.error('Uncaughted Exception！')
+	console.error(err);
+	process.exit(1);
+});
+
 require('./connections');
 
 app.use(cors());
@@ -23,14 +31,6 @@ app.use('/posts', postsRouter);
 // 404 錯誤
 app.use((req, res, next) => {
   errorHandle(res, 404, 'routing');
-});
-
-// 補捉程式錯誤
-process.on('uncaughtException', err => {
-  // 記錄錯誤下來，等到服務都處理完後，停掉該 process
-	console.error('Uncaughted Exception！')
-	console.error(err);
-	process.exit(1);
 });
 
 // express 錯誤處理(上線(Prod)-自己設定的 err 錯誤 & 開發(dev)環境錯誤)
