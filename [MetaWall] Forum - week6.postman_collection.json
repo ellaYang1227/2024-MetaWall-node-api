@@ -7,148 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "posts",
-			"item": [
-				{
-					"name": "取得所有貼文",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{token}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}posts",
-							"host": [
-								"{{url}}posts"
-							],
-							"query": [
-								{
-									"key": "timeSort",
-									"value": "asc",
-									"disabled": true
-								},
-								{
-									"key": "q",
-									"value": "大家好",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "新增單筆貼文",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{token}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"image\": \"https://storage.googleapis.com/metawall-node-api.appspot.com/images/2aefb493-8e19-40e5-b60a-3350150813a9.jpg?GoogleAccessId=firebase-adminsdk-5cnz3%40metawall-node-api.iam.gserviceaccount.com&Expires=16756646400&Signature=xgp6Ao%2BQq75C3M4Qr7h3NJueG46BqTBShVT18g24jNp8bsZnyZ39o9CJVSVtdVl5ar0dp0jD6iAmvP%2F06Pde0CLHtRThLF0ewfcOI1dW%2FPSMCg41f7I8J8KRdq3EzFjilzkn%2FusYezmKZ7oJbB6k8kzfZhWFcnwXA%2BiKRXQtoaCJdORcPKEPXUXWlC7v4p5jyyYuxugnv5Tc9LmT1q3wMjCPyKBoDgO2KpTbe9RD5aK2YqO%2BbqJr8PiMh8by3hbmACcpvPeCXBcMPE7k%2BiYKZNSVAYc467427OldvZkCEB4MqeK%2BasFz%2BjqJtt6a7tf0d76sOzlWbsNTSq3dM7G%2FiQ%3D%3D\",\r\n    \"content\": \"今天下雨天0426\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}posts",
-							"host": [
-								"{{url}}posts"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "刪除所有貼文",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{token}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}posts",
-							"host": [
-								"{{url}}posts"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "刪除單筆貼文",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{token}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}posts/662f50ff43c29d4165b7bf8c",
-							"host": [
-								"{{url}}posts"
-							],
-							"path": [
-								"662f50ff43c29d4165b7bf8c"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "編輯單筆貼文",
-					"request": {
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{token}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"image\": \"https://storage.googleapis.com/metawall-node-api.appspot.com/images/2aefb493-8e19-40e5-b60a-3350150813a9.jpg?GoogleAccessId=firebase-adminsdk-5cnz3%40metawall-node-api.iam.gserviceaccount.com&Expires=16756646400&Signature=xgp6Ao%2BQq75C3M4Qr7h3NJueG46BqTBShVT18g24jNp8bsZnyZ39o9CJVSVtdVl5ar0dp0jD6iAmvP%2F06Pde0CLHtRThLF0ewfcOI1dW%2FPSMCg41f7I8J8KRdq3EzFjilzkn%2FusYezmKZ7oJbB6k8kzfZhWFcnwXA%2BiKRXQtoaCJdORcPKEPXUXWlC7v4p5jyyYuxugnv5Tc9LmT1q3wMjCPyKBoDgO2KpTbe9RD5aK2YqO%2BbqJr8PiMh8by3hbmACcpvPeCXBcMPE7k%2BiYKZNSVAYc467427OldvZkCEB4MqeK%2BasFz%2BjqJtt6a7tf0d76sOzlWbsNTSq3dM7G%2FiQ%3D%3D\",\r\n    \"content\": \"1111\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}posts/662f539abea2dcf85381801e",
-							"host": [
-								"{{url}}posts"
-							],
-							"path": [
-								"662f539abea2dcf85381801e"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "users",
+			"name": "users(會員功能)",
 			"item": [
 				{
 					"name": "註冊",
@@ -170,7 +29,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"email2@gmail.com\",\r\n    \"password\": \"1q2w3e4r\",\r\n    \"name\": \"ella\"\r\n}",
+							"raw": "{\r\n    \"email\": \"emai@gmail.com\",\r\n    \"password\": \"1q2w3e4r\",\r\n    \"name\": \"ella\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -209,7 +68,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"email23@gmail.com\",\r\n    \"password\": \"1q2w3e4r\"\r\n}",
+							"raw": "{\r\n    \"email\": \"emai@gmail.com\",\r\n    \"password\": \"1q2w3e4r\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -318,6 +177,397 @@
 			]
 		},
 		{
+			"name": "users(會員按讚追蹤動態)",
+			"item": [
+				{
+					"name": "追蹤朋友",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}users/663739bf41e948ebd62e11c8/follow",
+							"host": [
+								"{{url}}users"
+							],
+							"path": [
+								"663739bf41e948ebd62e11c8",
+								"follow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取消追蹤朋友",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}users/6617e16bdc5da7a4a45b762b/unfollow",
+							"host": [
+								"{{url}}users"
+							],
+							"path": [
+								"6617e16bdc5da7a4a45b762b",
+								"unfollow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得個人按讚列表",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}users/getLikeList",
+							"host": [
+								"{{url}}users"
+							],
+							"path": [
+								"getLikeList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得個人追蹤名單",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}users/following",
+							"host": [
+								"{{url}}users"
+							],
+							"path": [
+								"following"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "posts(動態貼文)",
+			"item": [
+				{
+					"name": "取得所有貼文",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}posts",
+							"host": [
+								"{{url}}posts"
+							],
+							"query": [
+								{
+									"key": "timeSort",
+									"value": "asc",
+									"disabled": true
+								},
+								{
+									"key": "q",
+									"value": "大家好",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得單一貼文",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}posts/6634854b7d6ce17685f482fd?q=大家好",
+							"host": [
+								"{{url}}posts"
+							],
+							"path": [
+								"6634854b7d6ce17685f482fd"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "大家好"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增單筆貼文",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\": \"https://storage.googleapis.com/metawall-node-api.appspot.com/images/2aefb493-8e19-40e5-b60a-3350150813a9.jpg?GoogleAccessId=firebase-adminsdk-5cnz3%40metawall-node-api.iam.gserviceaccount.com&Expires=16756646400&Signature=xgp6Ao%2BQq75C3M4Qr7h3NJueG46BqTBShVT18g24jNp8bsZnyZ39o9CJVSVtdVl5ar0dp0jD6iAmvP%2F06Pde0CLHtRThLF0ewfcOI1dW%2FPSMCg41f7I8J8KRdq3EzFjilzkn%2FusYezmKZ7oJbB6k8kzfZhWFcnwXA%2BiKRXQtoaCJdORcPKEPXUXWlC7v4p5jyyYuxugnv5Tc9LmT1q3wMjCPyKBoDgO2KpTbe9RD5aK2YqO%2BbqJr8PiMh8by3hbmACcpvPeCXBcMPE7k%2BiYKZNSVAYc467427OldvZkCEB4MqeK%2BasFz%2BjqJtt6a7tf0d76sOzlWbsNTSq3dM7G%2FiQ%3D%3D\",\r\n    \"content\": \"今天下雨天0503\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}posts",
+							"host": [
+								"{{url}}posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增一則貼文的讚",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}posts/66372a05d1c4c43383d403a7/like",
+							"host": [
+								"{{url}}posts"
+							],
+							"path": [
+								"66372a05d1c4c43383d403a7",
+								"like"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取消一則貼文的讚",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}posts/66372a05d1c4c43383d403a7/unlike",
+							"host": [
+								"{{url}}posts"
+							],
+							"path": [
+								"66372a05d1c4c43383d403a7",
+								"unlike"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增一則貼文的留言",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\": \"comment 內容\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}posts/6634a06d9b7b62f9308c4a37/comment",
+							"host": [
+								"{{url}}posts"
+							],
+							"path": [
+								"6634a06d9b7b62f9308c4a37",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得個人所有貼文列表",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}posts/user/662b3e0dbd8ff509c54785ee",
+							"host": [
+								"{{url}}posts"
+							],
+							"path": [
+								"user",
+								"662b3e0dbd8ff509c54785ee"
+							],
+							"query": [
+								{
+									"key": "timeSort",
+									"value": "asc",
+									"disabled": true
+								},
+								{
+									"key": "q",
+									"value": "大家好",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除所有貼文",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}posts",
+							"host": [
+								"{{url}}posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除單筆貼文",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}posts/66347511502dced157f5fb29",
+							"host": [
+								"{{url}}posts"
+							],
+							"path": [
+								"66347511502dced157f5fb29"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "編輯單筆貼文",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\": \"https://storage.googleapis.com/metawall-node-api.appspot.com/images/2aefb493-8e19-40e5-b60a-3350150813a9.jpg?GoogleAccessId=firebase-adminsdk-5cnz3%40metawall-node-api.iam.gserviceaccount.com&Expires=16756646400&Signature=xgp6Ao%2BQq75C3M4Qr7h3NJueG46BqTBShVT18g24jNp8bsZnyZ39o9CJVSVtdVl5ar0dp0jD6iAmvP%2F06Pde0CLHtRThLF0ewfcOI1dW%2FPSMCg41f7I8J8KRdq3EzFjilzkn%2FusYezmKZ7oJbB6k8kzfZhWFcnwXA%2BiKRXQtoaCJdORcPKEPXUXWlC7v4p5jyyYuxugnv5Tc9LmT1q3wMjCPyKBoDgO2KpTbe9RD5aK2YqO%2BbqJr8PiMh8by3hbmACcpvPeCXBcMPE7k%2BiYKZNSVAYc467427OldvZkCEB4MqeK%2BasFz%2BjqJtt6a7tf0d76sOzlWbsNTSq3dM7G%2FiQ%3D%3D\",\r\n    \"content\": \"大家好2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}posts/66371a40d30db5db2260132a",
+							"host": [
+								"{{url}}posts"
+							],
+							"path": [
+								"66371a40d30db5db2260132a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "其他",
 			"item": [
 				{
@@ -349,7 +599,7 @@
 								{
 									"key": "",
 									"type": "file",
-									"src": "/C:/Users/ellaYang/Downloads/nordwood-themes-R53t-Tg6J4c-unsplash (1).jpg"
+									"src": "/C:/Users/ellaYang/Downloads/students-3518726_960_720.jpg"
 								}
 							]
 						},

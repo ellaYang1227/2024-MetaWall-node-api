@@ -1,4 +1,5 @@
 const errorMag = {
+    objectIdFormat: '_id 不符合 ObjectId 格式',
     id: '沒有此 _id',
     idOrNotBelong: '沒有此 _id 或不屬於您',
     data: '沒有資料或空值',
@@ -13,6 +14,8 @@ const errorMag = {
     nameMinLength: '至少 2 個字元以上',
     sex: '性別只能填寫 male 或 female',
     url: '須為 https 開頭的網址',
+    followingOwn: '您無法追蹤自己',
+    unfollowingOwn: '您取消無法追蹤自己',
     noAuthorization: '您尚未登入！',
     jwt: 'Token 認證錯誤，請重新登入',
     axios: 'axios 連線錯誤',

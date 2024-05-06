@@ -35,6 +35,13 @@
 - 分支：[week7](https://github.com/ellaYang1227/2024-MetaWall-node-api/tree/week7)
 - [[API URL]https://MetaWall-node-api-week7.onrender.com/](https://MetaWall-node-api-week7.onrender.com/)
 
+### [week8] 新增按讚、追蹤、留言功能 API(連接資料庫 mongodb)
+
+貼文 API 新增按讚(like)、追蹤(follow)、留言(comment)功能，並新增會員按讚追蹤動態相關 API。
+
+- 分支：[week8](https://github.com/ellaYang1227/2024-MetaWall-node-api/tree/week8)
+- [[API URL]https://MetaWall-node-api-week8.onrender.com/](https://MetaWall-node-api-week8.onrender.com/)
+
 ---
 
 ## 安裝 express
