@@ -102,7 +102,7 @@ http://127.0.0.1:3000/
 
 ### 專案相關設定檔
 
-需新增 config.env 檔案，其相關參數如下
+需新增 config.env 檔案，其相關參數(同 config.env_example)如下
 
 ```
 DATABASE_PASSWORD=
