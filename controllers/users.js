@@ -21,9 +21,9 @@ const users = {
 
         if (bodyResultIsPass) {
             const { email, password, name } = body;
-            customizeValidator.email(email, next);
-            customizeValidator.password(password, next);
-            customizeValidator.name(name, next);
+            const isValid = customizeValidator.email(email, next) && 
+            customizeValidator.password(password, next) && customizeValidator.name(name, next);
+            if (!isValid) { return }
 
             const addUser = await User.create({ 
                 email, 
@@ -45,7 +45,8 @@ const users = {
 
         if (bodyResultIsPass) {
             const { email, password } = body;
-            customizeValidator.email(email, next);
+            const isValid = customizeValidator.email(email, next);
+            if (!isValid) { return }
 
             const findUser = await User.findOne({ email }).select('+password');
             if (!findUser) { return next(appError(400, 'memberNotExist', next)) }
@@ -68,8 +69,9 @@ const users = {
 
         if (bodyResultIsPass) {
             const { newPassword, confirmPassword } = body;
-            customizeValidator.password(newPassword, next);
-
+            const isValid = customizeValidator.password(newPassword, next);
+            if (!isValid) { return }
+            
             if (newPassword !== confirmPassword) { return next(appError(400, 'passwordUnequal', next)) }
             await User.findByIdAndUpdate(user._id, 
                 { password: await encrypt(newPassword)}, 
@@ -93,9 +95,20 @@ const users = {
 
         if (bodyResultIsPass) {
             const { photo, name, sex } = body;
-            if (photo) { customizeValidator.url(photo, next, 'photo') }
-            if (name) { customizeValidator.name(name, next) }
-            if (sex) { customizeValidator.sex(sex, next) }
+            if (photo) { 
+                const isValid = customizeValidator.url(photo, next, 'photo');
+                if (!isValid) { return }
+            }
+
+            if (name) {
+                const isValid = customizeValidator.name(name, next);
+                if (!isValid) { return }
+            }
+
+            if (sex) {
+                const isValid = customizeValidator.sex(sex, next);
+                if (!isValid) { return }
+            }
 
             const updatUser = await User.findByIdAndUpdate(user._id, 
                 { photo, name, sex }, 
@@ -104,7 +117,7 @@ const users = {
             if (updatUser) {
                 successHandle(res, updatUser);
             } else {
-                return next(appError(400, 'jwt', memberNotExist));
+                return next(appError(400, 'jwt', next));
             }
         }
     }
