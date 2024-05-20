@@ -83,9 +83,11 @@ app.use((err, req, res, next) => {
     err.isOperational = true;
     return resErrorProd(err, res);
   } else if (err.message.indexOf('圖片') > -1) {
+    err.statusCode = 400;
     err.isOperational = true;
     return resErrorProd(err, res);
   } else if (err.name === 'MulterError' && err.message === 'File too large') {
+    err.statusCode = 400;
     err.message = 'multerErrorSize';
     err.isOperational = true;
     return resErrorProd(err, res);
